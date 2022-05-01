@@ -56,6 +56,8 @@ function PostPage({ trendingResults, followResults, providers }) {
         <title>
           {post?.username} on Twitter: "{post?.text}"
         </title>
+        <meta name="theme-color" content="#000000" />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-auto flex min-h-screen max-w-[1500px] bg-black">
