@@ -59,6 +59,7 @@ function Login({ providers }) {
       <Head>
         <title>Login / Twitter</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#000000" />
       </Head>
       <Image
         src="https://rb.gy/ogau5a"

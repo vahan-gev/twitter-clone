@@ -20,6 +20,7 @@ export default function Home({ trendingResults, followResults, providers }) {
       <Head>
         <title>Home / Twitter</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#000000" />
       </Head>
 
       <main className="mx-auto flex min-h-screen max-w-[1500px] bg-black">
