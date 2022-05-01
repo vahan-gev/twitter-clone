@@ -1,8 +1,59 @@
+import {
+  createUserWithEmailAndPassword,
+  signInWithCredential,
+  signInWithEmailAndPassword,
+} from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
 import { signIn } from 'next-auth/react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { auth, db } from '../firebase'
 
 function Login({ providers }) {
+  // const router = useRouter()
+  // const createAccount = (email, password, username, name, surname) => {
+  //   createUserWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       setDoc(doc(db, 'users', userCredential.user.uid), {
+  //         uid: userCredential.user.uid,
+  //         username: username,
+  //         password: password,
+  //         displayName: name + ' ' + surname,
+  //         photoURL:
+  //           'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+  //       })
+  //       updateProfile(userCredential.user, {
+  //         displayName: name + ' ' + surname,
+  //         photoURL:
+  //           'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+  //       })
+  //       console.log(userCredential.user)
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code
+  //       const errorMessage = error.message
+  //       console.log(errorCode + errorMessage)
+  //     })
+  // }
+  // createAccount(
+  //   'vahangevorgyan0212@gmail.com',
+  //   'vahan2004',
+  //   'vahan_gev',
+  //   'Vahan',
+  //   'Gevorgyan'
+  // )
+
+  // const signIn = async () => {
+  //   await signInWithEmailAndPassword(
+  //     auth,
+  //     'vahangevorgyan0212@gmail.com',
+  //     'vahan2004'
+  //   ).then((user) => {
+  //     console.log(auth.currentUser)
+  //     router.push('/')
+  //   })
+  // }
   return (
     <div className="flex flex-col items-center space-y-20 pt-48">
       <Head>
@@ -20,7 +71,10 @@ function Login({ providers }) {
         {Object.values(providers).map((provider) => (
           <div key={provider.name}>
             <a
-              onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+              onClick={() => {
+                signIn(provider.id, { callbackUrl: '/' })
+                // signIn()
+              }}
               className="group relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-md px-6 py-3 font-bold text-white shadow-2xl"
             >
               <span className="absolute inset-0 h-full w-full bg-gradient-to-br from-pink-600 via-purple-700 to-blue-400 opacity-0 transition duration-300 ease-out group-hover:opacity-100"></span>

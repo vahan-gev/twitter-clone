@@ -1,7 +1,7 @@
 import { initializeApp, getApp, getApps } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
-
+import { getAuth } from 'firebase/auth'
 const firebaseConfig = {
   apiKey: 'AIzaSyDfaT6A1Shs_7GN-oN_8HjafzG554_5NBs',
   authDomain: 'twitter-clone-d874c.firebaseapp.com',
@@ -13,6 +13,6 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
 const db = getFirestore()
 const storage = getStorage()
-
+const auth = getAuth()
 export default app
-export { db, storage }
+export { db, storage, auth }
