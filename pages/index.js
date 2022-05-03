@@ -7,14 +7,30 @@ import Login from '../components/Login'
 import Modal from '../components/Modal'
 import { modalState } from '../atoms/modalAtom'
 import { useRecoilState } from 'recoil'
-import { auth } from '../firebase'
+import { auth, db } from '../firebase'
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore'
 
 export default function Home({ trendingResults, followResults, providers }) {
   const { data: session } = useSession()
   const [isOpen, setIsOpen] = useRecoilState(modalState)
+  const usersRef = collection(db, 'users')
 
   if (!session) return <Login providers={providers} />
-
+  // let acc = getDocs(query(usersRef, where('username', '==', 'vahan_gev'))).then(
+  //   (user) => {
+  //     user.forEach((found) => {
+  //       // return found.data().followers.length
+  //       console.log(found.id)
+  //     })
+  //   }
+  // )
   return (
     <div className="">
       <Head>

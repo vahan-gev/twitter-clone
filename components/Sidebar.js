@@ -13,10 +13,11 @@ import {
 import SidebarLink from './SidebarLink'
 import { signOut } from 'next-auth/react'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 function Sidebar() {
   const { data: session } = useSession()
-
+  const router = useRouter()
   return (
     <div className="fixed hidden h-full flex-col items-center p-2 sm:flex xl:w-[340px] xl:items-start">
       <div className="hoverAnimation flex h-14 w-14 items-center justify-center p-0 xl:ml-24">
@@ -37,7 +38,9 @@ function Sidebar() {
       </button>
       <div
         className="hoverAnimation mt-auto flex items-center justify-center text-[#d9d9d9] xl:ml-auto xl:-mr-5"
-        onClick={signOut}
+        onClick={() => {
+          router.push(`/user/${session.user.tag}`)
+        }}
       >
         <img
           src={session.user.image}
